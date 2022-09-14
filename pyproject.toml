@@ -27,6 +27,7 @@ flake8 = "^5.0.4"
 recreate_db = 'app.scripts.recreate_db:main'
 update_exchange_rate = 'app.scripts.update_exchange_rate:main'
 update_orders = 'app.scripts.update_orders:main'
+check_delivery_delays = 'app.scripts.check_delivery_delays:main'
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
