@@ -2,6 +2,8 @@ from app import create_app
 
 
 def main():
+    "Обновляет курс рубля к доллару"
+
     create_app()
     from app.adapters.central_bank import CBRuAdapter
     from app.entities.currency.service import CurrencyService

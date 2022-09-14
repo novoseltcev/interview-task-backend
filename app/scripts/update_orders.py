@@ -2,6 +2,7 @@ from app import create_app
 
 
 def main():
+    """Синхронизация заказов в БД с сервисом "Google Таблица" """
     create_app()
     from app.adapters.google_spreadsheet import GoogleSpreadsheetsAdapter
     from app.entities.order.service import OrderService

@@ -3,6 +3,8 @@ from app.db import db
 
 
 def main(dump_file='dumps/inserts.sql'):
+    """Пересоздаёт таблицы БД и загружает тестовый набор"""
+
     create_app()
     db.drop_all()
     db.create_all()

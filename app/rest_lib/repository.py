@@ -10,6 +10,8 @@ Model = Type[AbstractConcreteBase]
 
 
 class Repository:
+    """Абстрактный репозиторий - слой обращения к БД и ORM"""
+
     class PK(NamedTuple):
         ...
 

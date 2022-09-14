@@ -12,6 +12,8 @@ class Page(NamedTuple):
 
 
 class Service:
+    """Абстрактный сервис - мост между контроллером и репозиторием, вмещающий в себя бизнес-логику"""
+
     def __init__(self, repository: Repository | None):
         self.repository = repository
 
