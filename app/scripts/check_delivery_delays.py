@@ -3,7 +3,6 @@ from app import create_app
 
 def main():
     """При наличии заказов с просроченными сроками доставки отправляет уведомление в чат-бота Telegram"""
-
     create_app()
     from app.adapters.telegram_bot import TelegramBotAdapter
     from app.entities.order.service import OrderService

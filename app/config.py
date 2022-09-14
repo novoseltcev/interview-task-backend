@@ -21,7 +21,7 @@ class __GoogleSpreadsheetConfig:
 
 
 class __TelegramBotConfig:
-    TG_BOT_TOKEN = environ.get('TG_BOT_TOKEN')
+    TG_TOKEN = environ.get('TG_TOKEN')
     TG_CHAT_ID = environ.get('TG_CHAT_ID')
 
 
