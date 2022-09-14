@@ -1,14 +1,15 @@
 from app import create_app
-from app.adapters.google_spreadsheet import GoogleSpreadsheetsAdapter
-from app.entities.order.service import OrderService
 
 
 def main():
-    app = create_app()
-    adapter = GoogleSpreadsheetsAdapter(access_key=app.config.get('GOOGLE_API_KEY'))
+    create_app()
+    from app.adapters.google_spreadsheet import GoogleSpreadsheetsAdapter
+    from app.entities.order.service import OrderService
+    from app.config import config
+
     OrderService().replace(
-        rows=adapter.get_data(
-            id=app.config.get('GOOGLE_SPREADSHEET_ID'),
+        rows=GoogleSpreadsheetsAdapter().get_data(
+            id=config.GOOGLE_SPREADSHEET_ID,
             range='A:D'
         )
     )
