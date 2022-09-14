@@ -12,12 +12,12 @@ def main():
     orders = OrderService().get_expired_deliveries()
     if len(orders) > 0:
         table_prefix = '\n\t'
-        table_header = table_prefix + 'Номер заказа  |  Ожидаемая доставка' + \
-                       table_prefix + '--------------|--------------------'
+        table_header = table_prefix + '№ заказа  |  Срок доставки' + \
+                       table_prefix + '—————|———————'
 
         def create_row(order) -> str:
-            divider = 7 * ' ' + '|' + 2 * ' '
-            return str(order.num_order) + divider + str(order.delivery_date)
+            divider = 2 * ' ' + '|' + 3 * ' '
+            return 2 * ' ' + str(order.num_order) + divider + str(order.delivery_date)
 
         table_body = table_prefix + table_prefix.join(create_row(order=order) for order in orders)
         table = table_header + table_body

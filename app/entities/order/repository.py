@@ -1,5 +1,10 @@
 from typing import Iterable, Sequence
 from datetime import date
+
+
+from flask_sqlalchemy import Pagination
+from sqlalchemy import desc
+
 from app.config import config
 
 from app.rest_lib.repository import Repository
@@ -30,4 +35,4 @@ class OrderRepository(Repository):
         return str(tuple(tuple(row) for row in rows))[1:-1]
 
     def get_all_expired_deliveries(self) -> Sequence[Order]:
-        return self.query().filter(self.model.delivery_date < date.today()).all()
+        return self.query().filter(self.model.delivery_date < date.today()).order_by(desc(Order.delivery_date)).all()

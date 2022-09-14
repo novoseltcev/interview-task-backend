@@ -6,7 +6,7 @@ from app.config import config
 class TelegramBotAdapter:
     """Адаптер взаимодействия с ботом через Telegram API"""
 
-    def __init__(self, token: str = config.TG_BOT_TOKEN):
+    def __init__(self, token: str = config.TG_TOKEN):
         self.api_url = 'https://api.telegram.org/bot' + token + '/{method}'
 
     def send_message(self, chat_id: str, message: str, is_quite: bool = False):
