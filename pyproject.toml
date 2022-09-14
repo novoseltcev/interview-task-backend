@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "app"
+version = "0.1.0"
+description = ""
+authors = ["novoseltcev <novoseltcev.stanislav@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "^2.2.2"
+python-dotenv = "^0.21.0"
+SQLAlchemy = "^1.4.41"
+
+Flask-SQLAlchemy = "^2.5.1"
+Flask-JWT-Extended = "^4.4.4"
+Flask-Cors = "^3.0.10"
+requests = "^2.28.1"
+marshmallow = "^3.17.1"
+stringcase = "^1.2.0"
+psycopg2 = "^2.9.3"
+
+[tool.poetry.dev-dependencies]
+tox = "^3.26.0"
+flake8 = "^5.0.4"
+
+[tool.poetry.scripts]
+recreate_db = 'app.scripts.recreate_db:main'
+update_exchange_rate = 'app.scripts.update_exchange_rate:main'
+update_orders = 'app.scripts.update_orders:main'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
