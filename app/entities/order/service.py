@@ -1,7 +1,7 @@
-from typing import Iterable
+from typing import Iterable, Sequence
 
 from app.rest_lib.service import Service
-from .repository import OrderRepository
+from .repository import OrderRepository, Order
 
 
 class OrderService(Service):
@@ -14,3 +14,6 @@ class OrderService(Service):
         self.repository.truncate()
         self.repository.insert(rows)
         self.repository.commit()
+
+    def get_expired_deliveries(self) -> Sequence[Order]:
+        return self.repository.get_all_expired_deliveries()

@@ -20,7 +20,12 @@ class __GoogleSpreadsheetConfig:
     GOOGLE_API_KEY = environ.get('GOOGLE_API_KEY')
 
 
-class Config(__DBConfig, __JWTConfig, __GoogleSpreadsheetConfig):
+class __TelegramBotConfig:
+    TG_BOT_TOKEN = environ.get('TG_BOT_TOKEN')
+    TG_CHAT_ID = environ.get('TG_CHAT_ID')
+
+
+class Config(__DBConfig, __JWTConfig, __GoogleSpreadsheetConfig, __TelegramBotConfig):
     DEBUG: bool = strtobool(environ.get('DEBUG', default='False'))
     SECRET_KEY: str = environ.get('SECRET_KEY')
 

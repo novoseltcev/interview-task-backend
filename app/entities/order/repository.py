@@ -1,4 +1,6 @@
-from typing import Iterable
+from typing import Iterable, Sequence
+from datetime import date
+from app.config import config
 
 from app.rest_lib.repository import Repository
 
@@ -7,6 +9,8 @@ from .model import Order
 
 
 class OrderRepository(Repository):
+    model: Order
+
     def __init__(self, page_length: int = config.PAGE_LENGTH):
         super().__init__(model=Order)
         self.page_length = page_length
@@ -24,3 +28,6 @@ class OrderRepository(Repository):
     @staticmethod
     def _compile_rows_to_values(rows: Iterable[Iterable[str]]):
         return str(tuple(tuple(row) for row in rows))[1:-1]
+
+    def get_all_expired_deliveries(self) -> Sequence[Order]:
+        return self.query().filter(self.model.delivery_date < date.today()).all()
