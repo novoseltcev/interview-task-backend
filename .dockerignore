@@ -1,0 +1,7 @@
+.idea
+.git
+.tox
+dist
+venv
+README.md
+__pycache__

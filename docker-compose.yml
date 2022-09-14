@@ -1,0 +1,38 @@
+version: "3.3"
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=test
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+    restart: always
+    ports:
+      - "5434:5432"
+
+
+  backend:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "5000:5000"
+    restart: always
+    depends_on:
+      - db
+
+  cron:
+    build: .
+    env_file:
+      - .env
+    entrypoint: ./cron-entrypoint.sh
+    restart: always
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

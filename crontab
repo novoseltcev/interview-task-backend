@@ -1,0 +1,4 @@
+*/1 * * * * echo "$(date +"%d %b %H:%M") | I'm alive " > /app/crontab.log
+*/5 * * * * update_orders
+0 */12 * * * update_exchange_rate
+0 10 * * * check_delivery_delays
