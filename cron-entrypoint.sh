@@ -4,4 +4,4 @@ set -e
 
 . /venv/bin/activate
 
-exec crond -f
+exec crond -f -l5 -L /app/crontab.log
