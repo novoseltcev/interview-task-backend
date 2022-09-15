@@ -80,6 +80,6 @@ sudo docker exec backend-test-task-cron-1 cat crontab.log
 docker exec -it backend-test-task-db-1 psql -U postgres -h db -d test
 # Ввод пароля от БД
 \d+
-select * from "order";
+select * from orders;
 select * from currency;
 ```
