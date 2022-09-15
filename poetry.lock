@@ -15,7 +15,7 @@ tz = ["python-dateutil"]
 
 [[package]]
 name = "certifi"
-version = "2022.6.15.2"
+version = "2022.9.14"
 description = "Python package for providing Mozilla's CA Bundle."
 category = "main"
 optional = false
@@ -113,22 +113,6 @@ python-versions = "*"
 [package.dependencies]
 Flask = ">=0.9"
 Six = "*"
-
-[[package]]
-name = "flask-jwt-extended"
-version = "4.4.4"
-description = "Extended JWT integration with Flask"
-category = "main"
-optional = false
-python-versions = ">=3.7,<4"
-
-[package.dependencies]
-Flask = ">=2.0,<3.0"
-PyJWT = ">=2.0,<3.0"
-Werkzeug = ">=0.14"
-
-[package.extras]
-asymmetric_crypto = ["cryptography (>=3.3.1)"]
 
 [[package]]
 name = "flask-migrate"
@@ -327,20 +311,6 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
-name = "pyjwt"
-version = "2.4.0"
-description = "JSON Web Token implementation in Python"
-category = "main"
-optional = false
-python-versions = ">=3.6"
-
-[package.extras]
-crypto = ["cryptography (>=3.3.1)"]
-dev = ["sphinx", "sphinx-rtd-theme", "zope.interface", "cryptography (>=3.3.1)", "pytest (>=6.0.0,<7.0.0)", "coverage[toml] (==5.0.4)", "mypy", "pre-commit"]
-docs = ["sphinx", "sphinx-rtd-theme", "zope.interface"]
-tests = ["pytest (>=6.0.0,<7.0.0)", "coverage[toml] (==5.0.4)"]
-
-[[package]]
 name = "pyparsing"
 version = "3.0.9"
 description = "pyparsing module - Classes and methods to define and execute parsing grammars"
@@ -505,7 +475,7 @@ watchdog = ["watchdog"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "3fe6d5c96494f5ba90305d36943b392f7817d2c723a019a2a62553945858a779"
+content-hash = "c4e315735e541297ade80c7febd8f278b778d1e625ce54452730f690707e310a"
 
 [metadata.files]
 alembic = []
@@ -518,7 +488,6 @@ filelock = []
 flake8 = []
 flask = []
 flask-cors = []
-flask-jwt-extended = []
 flask-migrate = []
 flask-sqlalchemy = []
 greenlet = []
@@ -537,7 +506,6 @@ psycopg2 = []
 py = []
 pycodestyle = []
 pyflakes = []
-pyjwt = []
 pyparsing = []
 python-dotenv = []
 requests = []
