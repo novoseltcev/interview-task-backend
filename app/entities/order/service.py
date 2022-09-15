@@ -1,8 +1,13 @@
-from typing import Iterable, Sequence
+from typing import Iterable, Sequence, NamedTuple
 
 from app.entities.currency.service import CurrencyService
 from app.rest_lib.service import Service
-from .repository import OrderRepository, Order
+from .repository import OrderRepository, Page, Order
+
+
+class Chart(NamedTuple):
+    groups: list[tuple[Order.delivery_date, Order.rubble_cost]]
+    total: float
 
 
 class OrderService(Service):
@@ -11,6 +16,13 @@ class OrderService(Service):
     def __init__(self, repository=OrderRepository()):
         super().__init__(repository)
         self.currency_service = CurrencyService()
+
+    def get_page(self, page: int) -> Page[Order]:
+        return self.repository.get_rubble_page(page=page)
+
+    def get_chart_data(self) -> Chart:
+        groups = self.repository.get_sum_by_date_with_total()
+        return Chart(groups=groups[:-1], total=groups[-1][-1])
 
     def update_costs(self) -> None:
         self.repository.update_rubble_costs(

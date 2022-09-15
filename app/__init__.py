@@ -29,8 +29,8 @@ def create_app() -> Flask:
         Currency, Order
     )
 
-    # from .routes import register_routes
-    # register_routes(app)
+    from .routes import register_routes
+    register_routes(app)
 
     return app
 

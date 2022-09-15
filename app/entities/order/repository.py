@@ -7,8 +7,8 @@ from flask_sqlalchemy import Pagination
 from app.config import config
 from app.db import db
 from app.rest_lib.repository import Repository
+from app.rest_lib.service import Page
 
-from app.config import config
 from .model import Order
 
 
@@ -39,3 +39,18 @@ class OrderRepository(Repository):
 
     def get_all_expired_deliveries(self) -> Sequence[Order]:
         return self.query().filter(self.model.delivery_date < date.today()).order_by(sa.desc(Order.delivery_date)).all()
+
+    def get_rubble_page(self, page: int) -> Page[Order]:
+        pagination: Pagination = (
+            self.query(Order)
+            .paginate(page, self.page_length, error_out=False)
+        )
+        return Page(items=pagination.items, pages=pagination.pages)
+
+    def get_sum_by_date_with_total(self) -> list[tuple[Order.delivery_date, Order.rubble_cost]]:
+        return (
+            self.query(columns=(Order.delivery_date, sa.func.sum(Order.rubble_cost)))
+            .group_by(sa.func.rollup(Order.delivery_date))
+            .order_by(Order.delivery_date)
+            .all()
+        )
