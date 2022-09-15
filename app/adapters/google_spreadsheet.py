@@ -19,7 +19,7 @@ class GoogleSpreadsheetsAdapter:
 
         suffix = f'{id}/values/{range}/?key={self.key}'
         vals = requests.get(self.api_template.format(version=self.version, suffix=suffix)).json()['values'][1:]
-        return ((self.__date_to_ISO(cell) if i == 3 else cell for i, cell in enumerate(row)) for row in vals)
+        return (tuple(self.__date_to_ISO(cell) if i == 3 else cell for i, cell in enumerate(row)) for row in vals)
 
     @staticmethod
     def __date_to_ISO(date: str) -> str:
