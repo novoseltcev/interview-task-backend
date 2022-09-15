@@ -1,8 +1,8 @@
 from __future__ import annotations
-from typing import Callable, NamedTuple, Any, Type
+from typing import Callable, NamedTuple, Any, Type, Iterable
 
 from sqlalchemy import text
-from sqlalchemy.orm import Session, Query
+from sqlalchemy.orm import Session, Query, InstrumentedAttribute as Column
 from sqlalchemy.ext.declarative import AbstractConcreteBase
 from app.db import session
 
@@ -30,8 +30,10 @@ class Repository:
     def pk_query(self, pk: PK, model: Model = None) -> Any:
         return self.query(model).filter_by(**pk._asdict())
 
-    def query(self, model: Model = None) -> Query:
+    def query(self, model: Model = None, columns: Iterable[Column] = None) -> Query:
         result = self.session.query(model if model else self.model)
+        if columns:
+            result = self.session.query(*columns)
         Query.custom_filters = lambda query, *params, **kwargs: self.__custom_filters(query, *params, **kwargs)
         Query.custom_order_by = lambda query, *params, **kwargs: self.__custom_orders(query, *params, **kwargs)
         return result

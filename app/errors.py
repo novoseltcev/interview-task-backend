@@ -1,4 +1,5 @@
 from flask import current_app
+from marshmallow import ValidationError
 
 
 class CustomException(Exception):
@@ -39,3 +40,8 @@ class LogicError(CustomException):
 @current_app.errorhandler(CustomException)
 def handle_requests(error: CustomException):
     return error.json, error.http_code
+
+
+@current_app.errorhandler(ValidationError)
+def handle_requests(error: ValidationError):
+    return {'error': error.messages}, 422

@@ -16,10 +16,3 @@ class Service:
 
     def __init__(self, repository: Repository | None):
         self.repository = repository
-
-
-class AbstractAuthService(ABC, Service):
-    @property
-    @abstractmethod
-    def user(self):
-        pass

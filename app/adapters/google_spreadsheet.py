@@ -1,4 +1,4 @@
-from typing import Iterable
+from typing import Iterable, Sequence
 
 import requests
 
@@ -14,7 +14,7 @@ class GoogleSpreadsheetsAdapter:
         self.key = access_key
         self.version = version
 
-    def get_data(self, id: str, range: str) -> Iterable[Iterable[str]]:
+    def get_data(self, id: str, range: str) -> Iterable[Sequence[str]]:
         """Возвращает матрицу ячеек таблицы на интервале {:ranges}"""
 
         suffix = f'{id}/values/{range}/?key={self.key}'

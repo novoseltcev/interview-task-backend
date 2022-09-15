@@ -23,3 +23,6 @@ class CurrencyRepository(Repository):
         self.pk_query(pk=pk).update(data)
         self.session.commit()
 
+    def get_by_char_code(self, char_code: str) -> Currency:
+        return self.query().filter(Currency.char_code == char_code).first()
+

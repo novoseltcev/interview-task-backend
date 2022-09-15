@@ -2,7 +2,6 @@ from xml.etree import ElementTree
 
 import requests
 
-
 from app.entities.currency.schema import CurrencySchema
 
 

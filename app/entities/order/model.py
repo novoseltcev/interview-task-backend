@@ -8,5 +8,4 @@ class Order(db.Model):
     num_order = db.Column(db.Integer, nullable=False)
     cost = db.Column(db.Float, nullable=False)
     delivery_date = db.Column(db.Date, nullable=False)
-
-
+    rubble_cost = db.Column(db.Float, nullable=False)

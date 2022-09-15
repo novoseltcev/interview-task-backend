@@ -29,10 +29,13 @@ class OrderRepository(Repository):
         self.session.execute(
             statement=(
                 db.metadata.tables[self.model.__tablename__]
-                    .insert()
-                    .values(tuple(rows))
+                .insert()
+                .values(tuple(rows))
             )
         )
+
+    def update_rubble_costs(self, rate: float):
+        self.query().update(dict(rubble_cost=rate * Order.cost))
 
     def get_all_expired_deliveries(self) -> Sequence[Order]:
         return self.query().filter(self.model.delivery_date < date.today()).order_by(sa.desc(Order.delivery_date)).all()
