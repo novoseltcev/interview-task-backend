@@ -2,7 +2,7 @@ from app.db import db
 
 
 class Order(db.Model):
-    __tablename__ = 'order'
+    __tablename__ = 'orders'
 
     id = db.Column(db.Integer, nullable=False, primary_key=True)
     num_order = db.Column(db.Integer, nullable=False)

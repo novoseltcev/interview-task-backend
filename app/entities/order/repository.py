@@ -23,7 +23,7 @@ class OrderRepository(Repository):
         self.session.commit()
 
     def truncate(self):
-        self.session.execute(statement=f'TRUNCATE TABLE "{self.model.__tablename__}"')
+        self.session.execute(statement='TRUNCATE TABLE ' + self.model.__tablename__)
 
     def insert(self, rows: Iterable[Iterable[str]]):
         self.session.execute(
