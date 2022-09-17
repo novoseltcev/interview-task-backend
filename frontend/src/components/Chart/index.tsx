@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     ArcElement,
     CategoryScale,
@@ -26,7 +26,7 @@ ChartJS.register(
     Title
 );
 
-const Chart: FC = () => {
+const Chart = () => {
     const [data, setData] = useState<Coords[]>([]);
     const [total, setTotal] = useState<number>(0);
     const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -52,18 +52,19 @@ const Chart: FC = () => {
         }]
     };
 
-    return (
-        <div>
-            <div className={styles.total}>
-                <p>Общая сумма поставок</p>
-                <p>{parseFloat(String(total)).toFixed(2)} ₽</p>
-            </div>
-            {isLoading
-                ? "Загрузка"
-                : <Line data={chartData}></Line>
-            }
-        </div>
-    );
+    return <div>
+        {
+            isLoading ? <p>Загрузка</p> : (
+                <>
+                    <div className={styles.total}>
+                        <p>Общая сумма поставок</p>
+                        <p>{parseFloat(String(total)).toFixed(2)} ₽</p>
+                    </div>
+                    <Line data={chartData}></Line>
+                </>
+            )
+        }
+    </div>
 };
 
 export default Chart;
