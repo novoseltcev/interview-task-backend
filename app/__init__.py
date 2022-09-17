@@ -9,7 +9,7 @@ from flask_migrate import Migrate
 def create_app() -> Flask:
     app = Flask(__name__, instance_relative_config=True)
     app.url_map.strict_slashes = False
-    CORS(app)
+    CORS(app, resources={r"*": {"origins": "*"}})
 
     load_dotenv('.env')
 

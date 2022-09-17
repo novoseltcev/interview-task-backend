@@ -8,7 +8,7 @@ services:
     environment:
       - POSTGRES_DB=test
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_PASSWORD=password
 
     restart: always
     ports:
@@ -30,6 +30,18 @@ services:
     env_file:
       - .env
     entrypoint: ./cron-entrypoint.sh
+    restart: always
+    depends_on:
+      - backend
+
+  frontend:
+    build: frontend
+    env_file:
+      - frontend/.env
+    ports:
+      - "3000:3000"
+    command:
+      npm run start
     restart: always
     depends_on:
       - backend
