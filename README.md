@@ -32,6 +32,7 @@
 git clone https://github.com/novoseltcev/backend-test-task.git
 cd backend-test-task
 cp .env.example .env
+cp frontend/.env.example frontend/.env
 ```
 
 1. Для обращения к API Google Spreadsheets необходимо создать API-ключ и добавить его в .env: https://console.cloud.google.com/apis/credentials
