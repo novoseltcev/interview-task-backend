@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  flex-grow: 1;
+  padding: 30px 50px 150px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 40px;
+  grid-auto-columns: 1fr 1fr;
+}
